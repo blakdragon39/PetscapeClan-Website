@@ -1,8 +1,12 @@
+import React from 'react'
+import Toolbar from './Toolbar'
+
 function App() {
-  return (
-    <div>
-    </div>
-  );
+    return (
+        <div>
+            <Toolbar/>
+        </div>
+    )
 }
 
-export default App;
+export default App
