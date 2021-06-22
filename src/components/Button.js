@@ -11,6 +11,14 @@ const Button = styled.button`
     padding-right: 16px;
     border: 1px solid ${theme.colorSecondary};
     border-radius: 4px;
+    
+    &:hover {
+        border-width: 2px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 `
 
 export default Button

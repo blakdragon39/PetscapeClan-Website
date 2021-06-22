@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import theme from './theme'
+import routes from './routes'
 import Button from './components/Button'
 
 const ToolbarContainer = styled.div`
@@ -16,8 +18,12 @@ const ToolbarContainer = styled.div`
 const Toolbar = () => {
     return(
         <ToolbarContainer>
-            <Button>SIGN-UP</Button>
-            <Button style={{ marginLeft: 8 }}>LOGIN</Button>
+            <Link to={routes.signUp}>
+                <Button>SIGN-UP</Button>
+            </Link>
+            <Link to={routes.login}>
+                <Button style={{ marginLeft: 8 }}>LOGIN</Button>
+            </Link>
         </ToolbarContainer>
     )
 }
