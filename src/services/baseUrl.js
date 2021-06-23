@@ -1,2 +1,2 @@
-const baseUrl = 'https://petscape.cc/api/'
+const baseUrl = 'https://petscape.cc/api'
 export default baseUrl
