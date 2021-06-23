@@ -54,10 +54,10 @@ const loginSlice = createSlice({
             state.pending = true
         },
         [register.fulfilled]: (state) => {
-            state.pending = true
+            state.pending = false
         },
         [register.rejected]: (state) => {
-            state.pending = true
+            state.pending = false
         }
     }
 })
