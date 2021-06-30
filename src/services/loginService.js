@@ -3,8 +3,6 @@ import baseUrl from './baseUrl'
 
 const loginUrl = `${baseUrl}/login`
 
-//https://blog.prototypr.io/how-to-build-google-login-into-a-react-app-and-node-express-api-821d049ee670
-
 const login = async (email, password) => {
     const response = await axios.post(loginUrl, { email, password })
     return response.data

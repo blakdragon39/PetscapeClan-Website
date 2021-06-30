@@ -6,7 +6,9 @@ export const register = createAsyncThunk(
     'login/register',
     async ({ email, password, displayName}, { rejectWithValue }) => {
         try {
-            return await loginService.register(email, password, displayName)
+            const user = await loginService.register(email, password, displayName)
+            localStorage.setUser(user)
+            return user
         } catch (e) {
             return rejectWithValue(e.response.data.message)
         }
@@ -18,6 +20,19 @@ export const login = createAsyncThunk(
     async ({ email, password }, { rejectWithValue }) => {
         try {
             const user = await loginService.login(email, password)
+            localStorage.setUser(user)
+            return user
+        } catch (e) {
+            return rejectWithValue(e.response.data.message)
+        }
+    }
+)
+
+export const googleLogin = createAsyncThunk(
+    'login/google',
+    async ({ idToken }, { rejectWithValue }) => {
+        try {
+            const user = await loginService.loginGoogle(idToken)
             localStorage.setUser(user)
             return user
         } catch (e) {
