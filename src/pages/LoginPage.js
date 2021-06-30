@@ -38,6 +38,8 @@ const LoginPage = () => {
             setError(result.payload)
             password.clear()
             break
+        default:
+            break
         }
     }
 
@@ -52,6 +54,8 @@ const LoginPage = () => {
             break
         case googleLogin.rejected.toString():
             setError(result.payload)
+            break
+        default:
             break
         }
     }

@@ -42,6 +42,8 @@ const SignUpPage = () => {
             setError(result.payload)
             password.clear()
             break
+        default:
+            break
         }
     }
 
@@ -56,6 +58,8 @@ const SignUpPage = () => {
             break
         case googleLogin.rejected.toString():
             setError(result.payload)
+            break
+        default:
             break
         }
     }
