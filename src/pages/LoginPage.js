@@ -6,12 +6,12 @@ import useControlledInput from '../hooks/useControlledInput'
 import { login, googleLogin } from '../reducers/loginReducer'
 import routes from '../routes'
 
-import Alert from '../components/Alert'
-import Busy from '../components/Busy'
-import Button from '../components/Button'
-import FormInput from '../components/FormInput'
+import Alert from '../components/common/Alert'
+import Busy from '../components/common/Busy'
+import Button from '../components/common/Button'
+import FormInput from '../components/common/FormInput'
 import GoogleLogin from 'react-google-login'
-import VerticalSpace from '../components/VerticalSpace'
+import VerticalSpace from '../components/common/VerticalSpace'
 
 const LoginPage = () => {
     const email = useControlledInput('text')

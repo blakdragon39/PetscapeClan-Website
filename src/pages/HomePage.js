@@ -1,7 +1,22 @@
 import React from 'react'
+import styled from 'styled-components'
+
+import ClanMemberList from '../components/ClanMemberList'
+import Container from '../components/common/Container'
+
+const HomeContainer = styled.div`
+    display: flex;
+    padding: 24px;
+`
 
 const HomePage = () => {
-    return <div />
+    return (
+        <HomeContainer className='home'>
+            <Container>
+                <ClanMemberList />
+            </Container>
+        </HomeContainer>
+    )
 }
 
 export default HomePage

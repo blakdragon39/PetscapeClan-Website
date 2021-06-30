@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { keyframes } from 'styled-components'
-import theme from '../theme'
+import theme from '../../theme'
 
 const busyAnimation = keyframes`
     0% { transform: rotate(0deg); }

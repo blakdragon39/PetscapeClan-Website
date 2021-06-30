@@ -8,8 +8,8 @@ import theme from '../theme'
 import useUser from '../hooks/useUser'
 import { logout } from '../reducers/loginReducer'
 
-import Button from './Button'
-import Visibility from './Visibility'
+import Button from './common/Button'
+import Visibility from './common/Visibility'
 
 const ToolbarContainer = styled.div`
     background-color: ${theme.colorPrimary};
