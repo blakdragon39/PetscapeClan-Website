@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import routes from './routes'
 
-import Toolbar from './Toolbar'
+import Toolbar from './components/Toolbar'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import NotFoundPage from './pages/NotFoundPage'
