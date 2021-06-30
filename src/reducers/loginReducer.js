@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import loginService from '../services/loginService'
 import localStorage from '../services/localStorage'
 
+import User from '../models/User'
+
 export const register = createAsyncThunk(
     'login/register',
     async ({ email, password, displayName}, { rejectWithValue }) => {
@@ -44,7 +46,7 @@ export const googleLogin = createAsyncThunk(
 const loginSlice = createSlice({
     name: 'login',
     initialState: {
-        user: localStorage.getUser(),
+        user: localStorage.getUser() ? new User(localStorage.getUser()) : null,
         pending: false
     },
     reducers: {
@@ -58,7 +60,7 @@ const loginSlice = createSlice({
             state.pending = true
         },
         [login.fulfilled]: (state, action) => {
-            state.user = action.payload
+            state.user = new User(action.payload)
             state.pending = false
         },
         [login.rejected]: (state) => {
