@@ -44,6 +44,12 @@ const LoginPage = () => {
     }
 
     const handleGoogleLogin = async (data) => {
+        if (data.error) {
+            //todo what are possible errors? (also SignUpPage)
+            //popup_closed_by_user
+            return
+        }
+
         const result = await dispatch(googleLogin({
             idToken: data.tokenId
         }))

@@ -24,7 +24,8 @@ const SignUpPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const onSubmitLogin = async (e) => {
+    const onSubmitSignUp = async (e) => {
+        console.log('test????')
         e.preventDefault()
 
         //todo check passwords match
@@ -48,6 +49,12 @@ const SignUpPage = () => {
     }
 
     const handleGoogleLogin = async (data) => {
+        if (data.error) {
+            //todo what are possible errors? (also LoginPage)
+            //popup_closed_by_user
+            return
+        }
+
         const result = await dispatch(googleLogin({
             idToken: data.tokenId
         }))
@@ -66,7 +73,7 @@ const SignUpPage = () => {
 
     return (
         <div style={{ padding: 32 }}>
-            <form onSubmit={onSubmitLogin}>
+            <form onSubmit={onSubmitSignUp}>
                 <label>
                     DisplayName: <FormInput { ...displayName.props } required />
                 </label>
