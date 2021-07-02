@@ -60,10 +60,21 @@ const loginSlice = createSlice({
             state.pending = true
         },
         [login.fulfilled]: (state, action) => {
-            state.user = new User(action.payload)
+            state.user = action.payload
             state.pending = false
         },
         [login.rejected]: (state) => {
+            state.user = null
+            state.pending = false
+        },
+        [googleLogin.pending]: (state) => {
+            state.pending = true
+        },
+        [googleLogin.fulfilled]: (state, action) => {
+            state.user = action.payload
+            state.pending = false
+        },
+        [googleLogin.rejected]: (state) => {
             state.user = null
             state.pending = false
         },

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import clanMemberService from '../services/clanMemberService'
 import theme from '../theme'
+import { getRankImage } from '../models/Rank'
 
 const ClanMemberList = () => {
     const [clanMembers, setClanMembers] = useState([])
@@ -30,6 +31,7 @@ const ClanMemberList = () => {
 }
 
 const ClanMemberContainer = styled.div`
+    display: flex;
     padding: 8px;
     
     &:hover {
@@ -37,10 +39,19 @@ const ClanMemberContainer = styled.div`
     }
 `
 
+const RunescapeName = styled.span`
+    flex-grow: 1;
+`
+
+const RankIcon = styled.img`
+    height: 22px;
+    width: 22px;
+`
+
 const ClanMember = ({ clanMember }) => {
     return (
         <ClanMemberContainer>
-            { clanMember.runescapeName }
+            <RunescapeName>{ clanMember.runescapeName }</RunescapeName> <RankIcon src={getRankImage(clanMember.rank)}/>
         </ClanMemberContainer>
     )
 }

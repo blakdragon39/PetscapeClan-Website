@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux'
 
-const useUser = () => useSelector(store => store.loginState.user)
+import User from '../models/User'
+
+const useUser = () => useSelector(store => new User(store.loginState.user))
 
 export default useUser

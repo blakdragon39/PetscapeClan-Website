@@ -7,7 +7,7 @@ class ClanMember {
         this.joinDate = json.joinDate
         this.lastSeen = json.lastSeen
         this.points = json.points
-        this.rank = json.rank //todo define?
+        this.rank = json.rank
         this.runescapeName = json.runescapeName
 
         this.achievements = json.achievements //todo define
