@@ -31,12 +31,20 @@ const ClanMemberList = () => {
 }
 
 const ClanMemberContainer = styled.div`
-    display: flex;
     padding: 8px;
+`
+
+const RunescapeNameContainer = styled.div`
+    display: flex;
     
     &:hover {
         background-color: ${theme.hoverOverlay}
     }
+`
+
+const AltsContainer = styled.div`
+    font-size: 14px;
+    margin-left: 8px;
 `
 
 const RunescapeName = styled.span`
@@ -49,9 +57,17 @@ const RankIcon = styled.img`
 `
 
 const ClanMember = ({ clanMember }) => {
+    console.log(clanMember.alts)
     return (
         <ClanMemberContainer>
-            <RunescapeName>{ clanMember.runescapeName }</RunescapeName> <RankIcon src={getRankImage(clanMember.rank)}/>
+            <RunescapeNameContainer>
+                <RunescapeName>{ clanMember.runescapeName }</RunescapeName> <RankIcon src={getRankImage(clanMember.rank)}/>
+            </RunescapeNameContainer>
+            {
+                clanMember.alts.map(alt =>
+                    <AltsContainer key={alt}>{ alt }</AltsContainer>
+                )
+            }
         </ClanMemberContainer>
     )
 }
