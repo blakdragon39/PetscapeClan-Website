@@ -32,14 +32,14 @@ const ClanMemberList = () => {
 
 const ClanMemberContainer = styled.div`
     padding: 8px;
-`
-
-const RunescapeNameContainer = styled.div`
-    display: flex;
     
     &:hover {
         background-color: ${theme.hoverOverlay}
     }
+`
+
+const RunescapeNameContainer = styled.div`
+    display: flex;
 `
 
 const AltsContainer = styled.div`
