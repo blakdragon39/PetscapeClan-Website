@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import clanMemberService from '../services/clanMemberService'
-import theme from '../theme'
 import { getRankImage } from '../models/Rank'
+
+import Container from './common/Container'
+import theme from '../theme'
 
 const ClanMemberList = () => {
     const [clanMembers, setClanMembers] = useState([])
@@ -15,7 +17,7 @@ const ClanMemberList = () => {
     }, [])
 
     return (
-        <div>
+        <Container style={{ width: 400 }}>
             {
                 clanMembers
                     .sort((c1, c2) => (c1.runescapeName.toLowerCase() > c2.runescapeName.toLowerCase()) ? 1 : -1)
@@ -26,12 +28,13 @@ const ClanMemberList = () => {
                                 clanMember={clanMember} />
                     )
             }
-        </div>
+        </Container>
     )
 }
 
 const ClanMemberContainer = styled.div`
     padding: 8px;
+    border-radius: 8px;
     
     &:hover {
         background-color: ${theme.hoverOverlay}
@@ -57,7 +60,6 @@ const RankIcon = styled.img`
 `
 
 const ClanMember = ({ clanMember }) => {
-    console.log(clanMember.alts)
     return (
         <ClanMemberContainer>
             <RunescapeNameContainer>

@@ -2,7 +2,7 @@ import React  from 'react'
 import styled from 'styled-components'
 
 import ClanMemberList from '../components/ClanMemberList'
-import Container from '../components/common/Container'
+import ClanListSort from '../components/ClanListSort'
 
 const HomeContainer = styled.div`
     display: flex;
@@ -11,10 +11,11 @@ const HomeContainer = styled.div`
 
 const HomePage = () => {
     return (
-        <HomeContainer className='home'>
-            <Container style={{ width: 400 }}>
-                <ClanMemberList />
-            </Container>
+        <HomeContainer>
+            <ClanMemberList />
+            <div style={{ marginLeft: 16 }}>
+                <ClanListSort />
+            </div>
         </HomeContainer>
     )
 }
