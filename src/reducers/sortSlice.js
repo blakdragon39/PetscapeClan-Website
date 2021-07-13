@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
-import sortTypes from '../models/sortTypes'
+import localStorage from '../services/localStorage'
 
 const sortSlice = createSlice({
     name: 'sort',
     initialState: {
-        value: sortTypes[0] //todo localStorage
+        value: localStorage.getSortType()
     },
     reducers: {
         setSortType: (state, action) => {
+            localStorage.setSortType(action.payload)
             state.value = action.payload
         }
     }

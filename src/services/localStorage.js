@@ -11,9 +11,16 @@ const setUser = (user) => {
     }
 }
 
+const getSortType = () => window.localStorage.getItem('sortType')
+
+const setSortType = (sortType) => window.localStorage.setItem('sortType', sortType)
+
 const localStorage = {
     getUser,
-    setUser
+    setUser,
+
+    getSortType,
+    setSortType
 }
 
 export default localStorage

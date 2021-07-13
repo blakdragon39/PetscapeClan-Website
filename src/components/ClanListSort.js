@@ -20,7 +20,15 @@ const ClanListSort = () => {
             Sorted by:
             <Select style={{ marginLeft: 8 }} onChange={onSortSelected}>
                 {
-                    sortTypes.map (type => <option value={type} key={type}> { type } </option>)
+                    sortTypes.map(type =>
+                        <option
+                            value={type}
+                            key={type}
+                            selected={type === sortType}
+                        >
+                            { type }
+                        </option>
+                    )
                 }
             </Select>
         </Container>
