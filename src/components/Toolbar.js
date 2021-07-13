@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import routes from '../routes'
 import theme from '../theme'
 import useUser from '../hooks/useUser'
-import { logout } from '../reducers/loginReducer'
+import { logout } from '../reducers/loginSlice'
 
 import Button from './common/Button'
 import Visibility from './common/Visibility'

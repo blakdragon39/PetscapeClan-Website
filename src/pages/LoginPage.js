@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import useControlledInput from '../hooks/useControlledInput'
 
-import { login, googleLogin } from '../reducers/loginReducer'
+import { login, googleLogin } from '../reducers/loginSlice'
 import routes from '../routes'
 
 import Alert from '../components/common/Alert'

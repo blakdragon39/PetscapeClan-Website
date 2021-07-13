@@ -46,7 +46,7 @@ export const googleLogin = createAsyncThunk(
 const loginSlice = createSlice({
     name: 'login',
     initialState: {
-        user: localStorage.getUser() ? new User(localStorage.getUser()) : null,
+        user: localStorage.getUser(),
         pending: false
     },
     reducers: {
