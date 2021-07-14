@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
 
 import clanMemberService from '../services/clanMemberService'
 import { getRankImage } from '../models/Rank'
+import { findSorter } from '../models/sortTypes'
 
 import Container from './common/Container'
 import theme from '../theme'
 
 const ClanMemberList = () => {
     const [clanMembers, setClanMembers] = useState([])
+    const sortType = useSelector(store => store.sortType.value)
 
     useEffect(async () => {
         const clanMembersResult = await clanMemberService.getClanMembers()
@@ -20,7 +23,7 @@ const ClanMemberList = () => {
         <Container style={{ width: 400 }}>
             {
                 clanMembers
-                    .sort((c1, c2) => (c1.runescapeName.toLowerCase() > c2.runescapeName.toLowerCase()) ? 1 : -1)
+                    .sort(findSorter(sortType))
                     .map(
                         clanMember =>
                             <ClanMember

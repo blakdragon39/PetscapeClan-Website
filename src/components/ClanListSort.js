@@ -1,11 +1,11 @@
 import React from 'react'
-import Container from './common/Container'
-import Select from './common/Select'
+import { useDispatch, useSelector } from 'react-redux'
 
 import sortTypes from '../models/sortTypes'
-
-import { useSelector, useDispatch } from 'react-redux'
 import { setSortType } from '../reducers/sortSlice'
+
+import Container from './common/Container'
+import Select from './common/Select'
 
 const ClanListSort = () => {
     const sortType = useSelector(store => store.sortType.value)
@@ -18,17 +18,14 @@ const ClanListSort = () => {
     return (
         <Container>
             Sorted by:
-            <Select style={{ marginLeft: 8 }} onChange={onSortSelected}>
+            <Select
+                value={sortType}
+                onChange={onSortSelected}
+                style={{ marginLeft: 8 }} >
                 {
-                    sortTypes.map(type =>
-                        <option
-                            value={type}
-                            key={type}
-                            selected={type === sortType}
-                        >
-                            { type }
-                        </option>
-                    )
+                    sortTypes
+                        .map(type => type.label)
+                        .map(type => <option value={type} key={type}>{ type }</option>)
                 }
             </Select>
         </Container>

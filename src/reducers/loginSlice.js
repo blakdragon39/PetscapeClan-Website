@@ -2,8 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import loginService from '../services/loginService'
 import localStorage from '../services/localStorage'
 
-import User from '../models/User'
-
 export const register = createAsyncThunk(
     'login/register',
     async ({ email, password, displayName}, { rejectWithValue }) => {
