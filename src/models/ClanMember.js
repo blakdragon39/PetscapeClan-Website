@@ -1,5 +1,6 @@
 import Achievement from './Achievement'
 import Pet from './Pet'
+import Rank from './Rank'
 
 class ClanMember {
     constructor(json) {
@@ -10,7 +11,7 @@ class ClanMember {
         this.joinDate = json.joinDate
         this.lastSeen = json.lastSeen
         this.points = json.points
-        this.rank = json.rank
+        this.rank = new Rank(json.rank)
         this.runescapeName = json.runescapeName
 
         this.achievements = json.achievements.map(achievement => new Achievement(achievement))

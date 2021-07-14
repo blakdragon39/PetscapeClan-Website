@@ -1,42 +1,37 @@
 import rankImages from '../assets/ranks/ranks'
 
-const Rank = {
-    Bronze: 'Bronze',
-    Iron: 'Iron',
-    Steel: 'Steel',
-    Gold: 'Gold',
-    Mithril: 'Mithril',
-    Adamant: 'Adamant',
-    Rune: 'Rune',
-    Dragon: 'Dragon',
-    Admin: 'Admin',
-    DeputyOwner: 'DeputyOwner',
-    Owner: 'Owner'
+class Rank {
+    constructor(json) {
+        this.type = json.rank
+        this.label = json.label
+        this.order = json.order
+        this.points = json.points
+    }
 }
 
 export const getRankImage = (rank) => {
-    switch (rank) {
-    case Rank.Bronze:
+    switch (rank.type) {
+    case 'Bronze':
         return rankImages.bronze
-    case Rank.Iron:
+    case 'Iron':
         return rankImages.iron
-    case Rank.Steel:
+    case 'Steel':
         return rankImages.steel
-    case Rank.Gold:
+    case 'Gold':
         return rankImages.gold
-    case Rank.Mithril:
+    case 'Mithril':
         return rankImages.mithril
-    case Rank.Adamant:
+    case 'Adamant':
         return rankImages.adamant
-    case Rank.Rune:
+    case 'Rune':
         return rankImages.rune
-    case Rank.Dragon:
+    case 'Dragon':
         return rankImages.dragon
-    case Rank.Admin:
+    case 'Admin':
         return rankImages.admin
-    case Rank.DeputyOwner:
+    case 'DeputyOwner':
         return rankImages.deputy_owner
-    case Rank.Owner:
+    case 'Owner':
         return rankImages.owner
     default:
         return null

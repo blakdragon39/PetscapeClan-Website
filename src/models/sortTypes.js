@@ -1,7 +1,7 @@
 const sortTypes = [
     {
         label: 'Default',
-        sorter: (c1, c2) => {}
+        sorter: (c1, c2) => (c1.rank.order < c2.rank.order) ? 1 : -1
     },
     {
         label: 'Alphabetical',
