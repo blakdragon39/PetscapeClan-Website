@@ -13,6 +13,7 @@ class ClanMember {
         this.points = json.points
         this.rank = new Rank(json.rank)
         this.runescapeName = json.runescapeName
+        this.possibleRank = new Rank(json.possibleRank)
 
         this.achievements = json.achievements.map(achievement => new Achievement(achievement))
         this.pets = json.pets.map(pet => new Pet(pet))

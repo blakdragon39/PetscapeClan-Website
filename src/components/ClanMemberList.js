@@ -26,12 +26,12 @@ const ClanMemberList = () => {
     useEffect(() => {
         let result = clanMembers.slice(0)
 
-        if (filterNeedsRankUp) {
-            result = result.filter(filters.needsRankUp.filter)
-        }
-
         if (filterNotSeenToday) {
             result = result.filter(filters.notSeenToday.filter)
+        }
+
+        if (filterNeedsRankUp) {
+            result = result.filter(filters.needsRankUp.filter)
         }
 
         result = result.sort(findSorter(sortType))
