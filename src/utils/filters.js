@@ -6,9 +6,9 @@ const notSeenToday = {
         const lastSeen = moment(c.lastSeen, 'YYYY-MM-DD')
         const now = moment()
 
-        return lastSeen.get('year') === now.get('year') &&
-            lastSeen.get('month') === now.get('month') &&
-            lastSeen.get('date') === now.get('date')
+        return lastSeen.get('year') !== now.get('year') ||
+            lastSeen.get('month') !== now.get('month') ||
+            lastSeen.get('date') !== now.get('date')
     }
 }
 
