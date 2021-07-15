@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 
 import clanMemberService from '../services/clanMemberService'
+import filters from '../utils/filters'
 import { getRankImage } from '../models/Rank'
 import { findSorter } from '../utils/sortTypes'
 
@@ -12,18 +13,36 @@ import theme from '../theme'
 
 const ClanMemberList = () => {
     const [clanMembers, setClanMembers] = useState([])
+    const [sortedFilteredClanMembers, setSortedFilteredClanMembers] = useState([])
     const sortType = useSelector(store => store.sortType.value)
+    const filterNeedsRankUp = useSelector(store => store.filters.needsRankUp)
+    const filterNotSeenToday = useSelector(store => store.filters.notSeenToday)
 
     useEffect(async () => {
-        const clanMembersResult = await clanMemberService.getClanMembers()
-        setClanMembers(clanMembersResult)
+        const result = await clanMemberService.getClanMembers()
+        setClanMembers(result)
     }, [])
+
+    useEffect(() => {
+        let result = clanMembers.slice(0)
+
+        if (filterNeedsRankUp) {
+            result = result.filter(filters.needsRankUp.filter)
+        }
+
+        if (filterNotSeenToday) {
+            result = result.filter(filters.notSeenToday.filter)
+        }
+
+        result = result.sort(findSorter(sortType))
+
+        setSortedFilteredClanMembers(result)
+    }, [clanMembers, sortType, filterNeedsRankUp, filterNotSeenToday])
 
     return (
         <Container style={{ width: 400 }}>
             {
-                clanMembers
-                    .sort(findSorter(sortType))
+                sortedFilteredClanMembers
                     .map(
                         clanMember =>
                             <ClanMember

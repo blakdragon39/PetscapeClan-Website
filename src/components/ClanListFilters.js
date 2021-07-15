@@ -12,11 +12,11 @@ const ClanListFilters = () => {
     const dispatch = useDispatch()
 
     const notSeenTodayChange = (event) => {
-        console.log(`not seen today ${event.target.checked}`)
+        dispatch(event.target.checked ? setNotSeenTodayOn() : setNotSeenTodayOff())
     }
 
     const needsRankUpChange = (event) => {
-        console.log(`needs rank up ${event.target.checked}`)
+        dispatch(event.target.checked ? setNeedsRankUpOn() : setNeedsRankUpOff())
     }
 
     return (

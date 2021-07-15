@@ -7,10 +7,18 @@ const filterSlice = createSlice({
         notSeenToday: false
     },
     reducers: {
-        setNeedsRankUpOn: (state) => state.needsRankUp = true,
-        setNeedsRankUpOff: (state) => state.needsRankUp = false,
-        setNotSeenTodayOn: (state) => state.notSeenToday = true,
-        setNotSeenTodayOff: (state) => state.notSeenToday = false
+        setNeedsRankUpOn: (state) => {
+            state.needsRankUp = true
+        },
+        setNeedsRankUpOff: (state) => {
+            state.needsRankUp = false
+        },
+        setNotSeenTodayOn: (state) => {
+            state.notSeenToday = true
+        },
+        setNotSeenTodayOff: (state) => {
+            state.notSeenToday = false
+        }
     }
 })
 
