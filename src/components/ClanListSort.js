@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import sortTypes from '../models/sortTypes'
+import sortTypes from '../utils/sortTypes'
 import { setSortType } from '../reducers/sortSlice'
 
 import Container from './common/Container'

@@ -1,12 +1,14 @@
 import React  from 'react'
 import styled from 'styled-components'
 
-import ClanMemberList from '../components/ClanMemberList'
+import ClanListFilters from '../components/ClanListFilters'
 import ClanListSort from '../components/ClanListSort'
+import ClanMemberList from '../components/ClanMemberList'
+import VerticalSpace from '../components/common/VerticalSpace'
 
 const HomeContainer = styled.div`
     display: flex;
-    padding: 24px;
+    padding: 32px;
 `
 
 const HomePage = () => {
@@ -15,6 +17,8 @@ const HomePage = () => {
             <ClanMemberList />
             <div style={{ marginLeft: 16 }}>
                 <ClanListSort />
+                <VerticalSpace height={16} />
+                <ClanListFilters />
             </div>
         </HomeContainer>
     )

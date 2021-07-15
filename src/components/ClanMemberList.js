@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 import clanMemberService from '../services/clanMemberService'
 import { getRankImage } from '../models/Rank'
-import { findSorter } from '../models/sortTypes'
+import { findSorter } from '../utils/sortTypes'
 
 import Container from './common/Container'
 import theme from '../theme'
