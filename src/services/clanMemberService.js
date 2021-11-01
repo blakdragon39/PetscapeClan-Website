@@ -13,7 +13,7 @@ const getClanMembers = async () => {
 const getClanMember = async (runescapeName) => {
     const params = { runescapeName: runescapeName }
     const response = await axios.get(`${clanMemberUrl}/runescapeName`, { params })
-    return response.data
+    return new ClanMember(response.data)
 }
 
 const clanMemberService = { getClanMembers, getClanMember }
