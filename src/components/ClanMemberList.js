@@ -17,6 +17,7 @@ const ClanMemberList = () => {
     const sortType = useSelector(store => store.sortType.value)
     const filterNeedsRankUp = useSelector(store => store.filters.needsRankUp)
     const filterNotSeenToday = useSelector(store => store.filters.notSeenToday)
+    const filterSearch = useSelector(store => store.filters.search)
 
     useEffect(async () => {
         const result = await clanMemberService.getClanMembers()
@@ -34,10 +35,14 @@ const ClanMemberList = () => {
             result = result.filter(filters.needsRankUp.filter)
         }
 
+        if (filterSearch) {
+            result = result.filter(clanMember => clanMember.filterSearch(filterSearch))
+        }
+
         result = result.sort(findSorter(sortType))
 
         setSortedFilteredClanMembers(result)
-    }, [clanMembers, sortType, filterNeedsRankUp, filterNotSeenToday])
+    }, [clanMembers, sortType, filterNeedsRankUp, filterNotSeenToday, filterSearch])
 
     return (
         <Container style={{ width: 400 }}>

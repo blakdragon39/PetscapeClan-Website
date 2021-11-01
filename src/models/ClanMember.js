@@ -18,6 +18,10 @@ class ClanMember {
         this.achievements = json.achievements.map(achievement => new Achievement(achievement))
         this.pets = json.pets.map(pet => new Pet(pet))
     }
+
+    filterSearch(search) {
+        return this.runescapeName.toLowerCase().includes(search) || this.alts.some(alt => alt.toLowerCase().includes(search))
+    }
 }
 
 export default ClanMember

@@ -1,6 +1,7 @@
 import React  from 'react'
 import styled from 'styled-components'
 
+import Button from '../components/common/Button'
 import ClanListFilters from '../components/ClanListFilters'
 import ClanListSort from '../components/ClanListSort'
 import ClanMemberList from '../components/ClanMemberList'
@@ -19,6 +20,8 @@ const HomePage = () => {
                 <ClanListSort />
                 <VerticalSpace height={16} />
                 <ClanListFilters />
+                <VerticalSpace height={16} />
+                <Button>Update Seen Today</Button>
             </div>
         </HomeContainer>
     )

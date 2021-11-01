@@ -4,7 +4,8 @@ const filterSlice = createSlice({
     name: 'filter',
     initialState: {
         needsRankUp: false,
-        notSeenToday: false
+        notSeenToday: false,
+        search: ''
     },
     reducers: {
         setNeedsRankUpOn: (state) => {
@@ -18,6 +19,9 @@ const filterSlice = createSlice({
         },
         setNotSeenTodayOff: (state) => {
             state.notSeenToday = false
+        },
+        setSearch: (state, action) => {
+            state.search = action.payload
         }
     }
 })
@@ -26,7 +30,8 @@ export const {
     setNeedsRankUpOn,
     setNeedsRankUpOff,
     setNotSeenTodayOn,
-    setNotSeenTodayOff
+    setNotSeenTodayOff,
+    setSearch
 } = filterSlice.actions
 
 export default filterSlice.reducer
