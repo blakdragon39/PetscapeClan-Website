@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import clanMemberService from '../services/clanMemberService'
 import filters from '../utils/filters'
+import routes from '../routes'
 import { getRankImage } from '../models/Rank'
 import { findSorter } from '../utils/sortTypes'
 
@@ -87,8 +89,14 @@ const RankIcon = styled.img`
 `
 
 const ClanMember = ({ clanMember }) => {
+    const history = useHistory()
+
+    const goToClanMember = () => {
+        history.push(routes.buildClanMember(clanMember.runescapeName))
+    }
+
     return (
-        <ClanMemberContainer>
+        <ClanMemberContainer onClick={goToClanMember}>
             <RunescapeNameContainer>
                 <RunescapeName>{ clanMember.runescapeName }</RunescapeName> <RankIcon src={getRankImage(clanMember.rank)}/>
             </RunescapeNameContainer>
