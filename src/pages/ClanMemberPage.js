@@ -4,12 +4,16 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import clanMemberService from '../services/clanMemberService'
-import Busy from '../components/common/Busy'
 import theme from '../theme'
+import { petTypes } from '../models/Pet'
+import { achievementTypes } from '../models/Achievement'
+import Busy from '../components/common/Busy'
+import Container from '../components/common/Container'
+import HorizontalSpace from '../components/common/HorizontalSpace'
+import ListItem from '../components/common/ListItem'
 import RankIcon from '../components/RankIcon'
 import Visibility from '../components/common/Visibility'
 import VerticalSpace from '../components/common/VerticalSpace'
-import HorizontalSpace from '../components/common/HorizontalSpace'
 
 const ClanMemberPage = () => {
     const { runescapeName } = useParams()
@@ -47,6 +51,10 @@ const ClanMember = ({ clanMember }) => {
             <Alts clanMember={clanMember} />
             <Visibility isVisible={clanMember.alts}><VerticalSpace height={8} /></Visibility>
             <GeneralInfo clanMember={clanMember} />
+            <VerticalSpace height={16} />
+            <PetList clanMember={clanMember} />
+            <VerticalSpace height={16} />
+            <AchievementList clanMember={clanMember} />
         </ClanMemberContainer>
     )
 }
@@ -79,6 +87,38 @@ const GeneralInfo = ({ clanMember }) => {
 }
 
 GeneralInfo.propTypes = {
+    clanMember: PropTypes.object.isRequired
+}
+
+const PetList = ({ clanMember }) => {
+    return (
+        <div>
+            <b>Pets: </b> { clanMember.pets.length } / { petTypes.length }
+            <VerticalSpace height={8} />
+            <Container style={{ width: 400 }}>
+                { clanMember.pets.map(pet => <ListItem label={pet.label} key={pet.type} /> )}
+            </Container>
+        </div>
+    )
+}
+
+PetList.propTypes = {
+    clanMember: PropTypes.object.isRequired
+}
+
+const AchievementList = ({ clanMember }) => {
+    return (
+        <div>
+            <b>Achievements: </b> { clanMember.achievements.length } / { achievementTypes.length }
+            <VerticalSpace height={8} />
+            <Container style={{ width: 400 }}>
+                { clanMember.achievements.map(achievement => <ListItem label={achievement.label} key={achievement.type} /> )}
+            </Container>
+        </div>
+    )
+}
+
+AchievementList.propTypes = {
     clanMember: PropTypes.object.isRequired
 }
 

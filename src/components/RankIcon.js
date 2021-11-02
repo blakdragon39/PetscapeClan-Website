@@ -1,18 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import { getRankImage } from '../models/Rank'
 
+const RankIconContainer = styled.img`
+    height: ${props => props.height || '40px'},
+    width: ${props => props.width || '40px'}
+`
+
 const RankIcon = ({ rank, height, width }) => {
-    const style = {
-        height: height ? height : 40,
-        width: width ? width : 40
-    }
     return (
-        <img
+        <RankIconContainer
             src={getRankImage(rank)}
             alt={rank.label}
-            style={style}/>
+            height={height}
+            width={width}/>
     )
 }
 
