@@ -7,6 +7,7 @@ import clanMemberService from '../services/clanMemberService'
 import theme from '../theme'
 import { petTypes } from '../models/Pet'
 import { achievementTypes } from '../models/Achievement'
+import useUser from '../hooks/useUser'
 import Busy from '../components/common/Busy'
 import Container from '../components/common/Container'
 import HorizontalSpace from '../components/common/HorizontalSpace'
@@ -14,6 +15,7 @@ import ListItem from '../components/common/ListItem'
 import RankIcon from '../components/RankIcon'
 import Visibility from '../components/common/Visibility'
 import VerticalSpace from '../components/common/VerticalSpace'
+import edit_icon from '../assets/edit.svg'
 
 const ClanMemberPage = () => {
     const { runescapeName } = useParams()
@@ -34,19 +36,10 @@ const ClanMemberContainer = styled.div`
     padding: 16px;
 `
 
-const ClanMemberHeader = styled.div`
-    display: flex;
-    font-size: 24px;
-`
-
 const ClanMember = ({ clanMember }) => {
     return (
         <ClanMemberContainer>
-            <ClanMemberHeader>
-                <b>{ clanMember.runescapeName }</b>
-                <HorizontalSpace width={8} />
-                <RankIcon rank={clanMember.rank} height={32} width={32} />
-            </ClanMemberHeader>
+            <ClanMemberHeader clanMember={clanMember} />
             <VerticalSpace height={8} />
             <Alts clanMember={clanMember} />
             <Visibility isVisible={clanMember.alts}><VerticalSpace height={8} /></Visibility>
@@ -60,6 +53,39 @@ const ClanMember = ({ clanMember }) => {
 }
 
 ClanMember.propTypes = {
+    clanMember: PropTypes.object.isRequired
+}
+
+const ClanMemberHeaderContainer = styled.div`
+    display: flex;
+    font-size: 24px;
+`
+
+const ClanMemberHeader = ({ clanMember }) => {
+    const user = useUser()
+
+    const onEditClick = () => {
+        
+    }
+
+    return (
+        <ClanMemberHeaderContainer>
+            <b>{ clanMember.runescapeName }</b>
+            <HorizontalSpace width={8} />
+            <RankIcon rank={clanMember.rank} height={32} width={32} />
+            <HorizontalSpace width={8} />
+            <Visibility isVisible={user && user.isAdmin}>
+                <img
+                    src={edit_icon}
+                    alt='edit'
+                    style={{ height: 32, width: 32}}
+                    onClick={onEditClick} />
+            </Visibility>
+        </ClanMemberHeaderContainer>
+    )
+}
+
+ClanMemberHeader.propTypes = {
     clanMember: PropTypes.object.isRequired
 }
 
