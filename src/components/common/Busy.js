@@ -14,6 +14,7 @@ const Busy = styled.div`
     width: ${props => props.button ? '12px' : '28px'};
     height: ${props => props.button ? '12px' : '28px'};
     animation: ${busyAnimation} 1.5s linear infinite;
+    margin: ${props => props.margin ? `${props.margin}px` : '0px' }
 `
 
 export default Busy

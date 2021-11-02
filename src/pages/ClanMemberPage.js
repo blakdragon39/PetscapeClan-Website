@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import clanMemberService from '../services/clanMemberService'
 import theme from '../theme'
-import { petTypes } from '../models/Pet'
-import { achievementTypes } from '../models/Achievement'
 import useUser from '../hooks/useUser'
+import usePendingState from '../hooks/usePendingState'
+import routes from '../routes'
+import { achievementTypes } from '../models/Achievement'
+import { petTypes } from '../models/Pet'
+
+import Alert from '../components/common/Alert'
 import Busy from '../components/common/Busy'
 import Container from '../components/common/Container'
 import HorizontalSpace from '../components/common/HorizontalSpace'
@@ -17,28 +21,30 @@ import Visibility from '../components/common/Visibility'
 import VerticalSpace from '../components/common/VerticalSpace'
 import edit_icon from '../assets/edit.svg'
 
+const ClanMemberContainer = styled.div`
+    color: ${theme.colorOnPrimary};
+    padding: 32px;
+`
+
 const ClanMemberPage = () => {
     const { runescapeName } = useParams()
-    const [clanMember, setClanMember] = useState()
+    const clanMemberState = usePendingState(null, () => clanMemberService.getClanMember(runescapeName))
 
-    useEffect(async () => {
-        const result = await clanMemberService.getClanMember(runescapeName)
-        setClanMember(result)
-    }, [])
+    let body = null
+    if (clanMemberState.error) body = <Alert message={clanMemberState.error} />
+    else if (clanMemberState.pending) body = <Busy />
+    else if (clanMemberState.state) body = <ClanMember clanMember={clanMemberState.state} />
 
     return (
-        clanMember ? <ClanMember clanMember={clanMember} /> : <Busy style={{ margin: 32 }}/>
+        <ClanMemberContainer>
+            { body }
+        </ClanMemberContainer>
     )
 }
 
-const ClanMemberContainer = styled.div`
-    color: ${theme.colorOnPrimary};
-    padding: 16px;
-`
-
 const ClanMember = ({ clanMember }) => {
     return (
-        <ClanMemberContainer>
+        <div>
             <ClanMemberHeader clanMember={clanMember} />
             <VerticalSpace height={8} />
             <Alts clanMember={clanMember} />
@@ -48,7 +54,7 @@ const ClanMember = ({ clanMember }) => {
             <PetList clanMember={clanMember} />
             <VerticalSpace height={16} />
             <AchievementList clanMember={clanMember} />
-        </ClanMemberContainer>
+        </div>
     )
 }
 
@@ -63,9 +69,10 @@ const ClanMemberHeaderContainer = styled.div`
 
 const ClanMemberHeader = ({ clanMember }) => {
     const user = useUser()
+    const history = useHistory()
 
     const onEditClick = () => {
-        
+        history.push(routes.buildEditClanMember(clanMember.runescapeName))
     }
 
     return (

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import theme from '../../theme'
 
 const AlertContainer = styled.div`
+    color: ${theme.colorPrimary};
     background-color: ${theme.colorOnPrimary};
     padding: 16px;
     border-radius: 8px;
