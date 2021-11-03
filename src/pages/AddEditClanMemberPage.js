@@ -10,11 +10,13 @@ import usePendingState from '../hooks/usePendingState'
 import useUser from '../hooks/useUser'
 import { rankTypes } from '../models/Rank'
 
+import AddRemoveList from '../components/AddRemoveList'
 import Busy from '../components/common/Busy'
 import FormInput from '../components/common/FormInput'
 import HorizontalSpace from '../components/common/HorizontalSpace'
 import RankPicker from '../components/RankPicker'
 import NotAuthorizedPage from './NotAuthorizedPage'
+import VerticalSpace from '../components/common/VerticalSpace'
 
 const AddEditClanMemberContainer = styled.div`
     color: ${theme.colorOnPrimary};
@@ -54,6 +56,8 @@ const AddEditClanMember = ({ clanMember }) => {
                 rank={rank}
                 setRank={setRank} />
             <EditJoinDate joinDate={joinDate} setJoinDate={setJoinDate} />
+            <VerticalSpace height={16} />
+            <AddRemoveList list={alts} setList={setAlts} width={300} />
         </div>
     )
 }
