@@ -98,7 +98,7 @@ const ClanMember = ({ clanMember }) => {
     return (
         <ClanMemberContainer onClick={goToClanMember}>
             <RunescapeNameContainer>
-                <RunescapeName>{ clanMember.runescapeName }</RunescapeName> <RankIcon src={getRankImage(clanMember.rank)}/>
+                <RunescapeName>{ clanMember.runescapeName }</RunescapeName> <RankIcon src={getRankImage(clanMember.rank.type)}/>
             </RunescapeNameContainer>
             {
                 clanMember.alts.map(alt =>

@@ -79,7 +79,7 @@ const ClanMemberHeader = ({ clanMember }) => {
         <ClanMemberHeaderContainer>
             <b>{ clanMember.runescapeName }</b>
             <HorizontalSpace width={8} />
-            <RankIcon rank={clanMember.rank} height={32} width={32} />
+            <RankIcon rankType={clanMember.rank.type} rankLabel={clanMember.rank.label} height={32} width={32} />
             <HorizontalSpace width={8} />
             <Visibility isVisible={user && user.isAdmin}>
                 <img

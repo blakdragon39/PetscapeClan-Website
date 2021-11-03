@@ -9,8 +9,22 @@ class Rank {
     }
 }
 
-export const getRankImage = (rank) => {
-    switch (rank.type) {
+export const rankTypes = [
+    'Bronze',
+    'Iron',
+    'Steel',
+    'Gold',
+    'Mithril',
+    'Adamant',
+    'Rune',
+    'Dragon',
+    'Admin',
+    'DeputyOwner',
+    'Owner'
+]
+
+export const getRankImage = (rankType) => {
+    switch (rankType) {
     case 'Bronze':
         return rankImages.bronze
     case 'Iron':

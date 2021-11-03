@@ -9,18 +9,19 @@ const RankIconContainer = styled.img`
     width: ${props => props.width || '40px'}
 `
 
-const RankIcon = ({ rank, height, width }) => {
+const RankIcon = ({ rankType, rankLabel, height, width }) => {
     return (
         <RankIconContainer
-            src={getRankImage(rank)}
-            alt={rank.label}
+            src={getRankImage(rankType)}
+            alt={rankLabel}
             height={height}
             width={width}/>
     )
 }
 
 RankIcon.propTypes = {
-    rank: PropTypes.object.isRequired,
+    rankType: PropTypes.string.isRequired,
+    rankLabel: PropTypes.string.isRequired,
     height: PropTypes.number,
     width: PropTypes.number
 }
