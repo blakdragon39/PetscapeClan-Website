@@ -15,7 +15,7 @@ import Alert from '../components/common/Alert'
 import Busy from '../components/common/Busy'
 import Container from '../components/common/Container'
 import HorizontalSpace from '../components/common/HorizontalSpace'
-import ListItem from '../components/common/ListItem'
+import SelectableListItem from '../components/common/SelectableListItem'
 import RankIcon from '../components/RankIcon'
 import Visibility from '../components/common/Visibility'
 import VerticalSpace from '../components/common/VerticalSpace'
@@ -129,7 +129,7 @@ const PetList = ({ clanMember }) => {
             <b>Pets: </b> { clanMember.pets.length } / { petTypes.length }
             <VerticalSpace height={8} />
             <Container style={{ width: 400 }}>
-                { clanMember.pets.map(pet => <ListItem label={pet.label} key={pet.type} /> )}
+                { clanMember.pets.map(pet => <SelectableListItem label={pet.label} key={pet.type} /> )}
             </Container>
         </div>
     )
@@ -145,7 +145,7 @@ const AchievementList = ({ clanMember }) => {
             <b>Achievements: </b> { clanMember.achievements.length } / { achievementTypes.length }
             <VerticalSpace height={8} />
             <Container style={{ width: 400 }}>
-                { clanMember.achievements.map(achievement => <ListItem label={achievement.label} key={achievement.type} /> )}
+                { clanMember.achievements.map(achievement => <SelectableListItem label={achievement.label} key={achievement.type} /> )}
             </Container>
         </div>
     )

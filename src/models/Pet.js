@@ -15,6 +15,7 @@ export const petTypes = [
     'KalphitePrincess',
     'LilZik',
     'LittleNightmare',
+    'Nexling',
     'Noon',
     'Olmlet',
     'PetChaosElemental',
